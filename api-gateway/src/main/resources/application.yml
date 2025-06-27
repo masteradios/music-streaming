@@ -1,0 +1,69 @@
+server:
+  port:
+    4000
+
+
+auth:
+  service:
+    url : lb://auth-server
+
+spring:
+  application:
+    name: api-gateway
+
+
+  cloud:
+    gateway:
+
+      server:
+
+
+
+        webflux:
+
+
+          globalcors:
+            corsConfigurations:
+              '[/**]':
+                allowedOrigins: "http://localhost:5173"
+                allowedMethods:
+                  - GET
+                  - POST
+                  - PUT
+                  - DELETE
+                allowedHeaders: "*"
+                allowCredentials: true
+
+          routes:
+            - id: MUSIC-SERVICE
+              uri: lb://music-streaming
+              predicates:
+                - Path=/music/**
+              filters:
+                - JwtValidation
+
+            - id: AUTH-SERVICE
+              uri: lb://auth-server
+              predicates:
+                - Path=/auth/**
+
+
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:6700/eureka

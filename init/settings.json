@@ -1,0 +1,57 @@
+{
+  "settings": {
+    "analysis": {
+      "filter": {
+        "autocomplete_filter": {
+          "type": "edge_ngram",
+          "min_gram": 1,
+          "max_gram": 20
+        }
+      },
+      "analyzer": {
+        "autocomplete": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": ["lowercase", "autocomplete_filter"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "musicName": {
+        "type": "text",
+        "analyzer": "autocomplete",
+        "search_analyzer": "standard",
+        "copy_to": "searchText"
+      },
+      "artistName": {
+        "type": "text",
+        "analyzer": "autocomplete",
+        "search_analyzer": "standard",
+        "copy_to": "searchText"
+      },
+      "album": {
+        "type": "text",
+        "analyzer": "autocomplete",
+        "search_analyzer": "standard",
+        "copy_to": "searchText"
+      },
+      "searchText": {
+        "type": "text",
+        "analyzer": "autocomplete",
+        "search_analyzer": "standard"
+      },
+      "createdDate": {
+        "type": "date",
+        "format": "yyyy-MM-dd||strict_date_optional_time||yyyyMMdd"
+      },
+      "musicUrl": {
+        "type": "keyword"
+      },
+      "musicThumbnailUrl": {
+        "type": "keyword"
+      }
+    }
+  }
+}

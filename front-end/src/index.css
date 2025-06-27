@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 9999px;
+  background: #a855f7; /* purple thumb */
+  cursor: pointer;
+  appearance: none;
+  margin-top: -4px;
+  border: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 12px;
+  appearance: none;
+  width: 12px;
+  border-radius: 9999px;
+  background: #a855f7;
+  cursor: pointer;
+  border: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 9999px;
+  background: transparent;
+  appearance: none;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  appearance: none;
+  border-radius: 9999px;
+  background: transparent;
+}
+/* Apply to entire app */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #6b7280 transparent; /* gray-500 thumb, transparent track */
+}
+
+/* For Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #6b7280; /* Tailwind gray-500 */
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  background: #4b5563; /* gray-600 fallback */
+  background-image: linear-gradient(to right, #a855f7 0%, #a855f7 var(--volume-fill), transparent var(--volume-fill));
+  background-repeat: no-repeat;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  width: 12px;
+  border-radius: 9999px;
+  background: #a855f7;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px; /* <-- Tweak this */
+}
+
+.volume-slider::-moz-range-thumb {
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 9999px;
+  background: #a855f7;
+  cursor: pointer;
+  border: none;
+}
+

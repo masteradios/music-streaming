@@ -1,0 +1,45 @@
+server:
+  port:
+    4003
+
+
+
+
+spring:
+  application:
+    name: user-service
+
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      auto-offset-reset: latest
+      group-id: music-search-consumer-group
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        spring.json.trusted.packages: '*'
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/musicdb
+    username: postgres
+    password: postgres
+
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:6700/eureka
