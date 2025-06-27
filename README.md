@@ -1,4 +1,4 @@
-# 🎵 Music Streaming Backend (Spring Boot)
+# 🎵 Music Streaming via Microservices (Spring Boot + React)
 
 A microservice-oriented backend system for streaming music, built using **Spring Boot**, **PostgreSQL**, and **Kafka**. This project is designed to serve audio content efficiently while supporting session-level tracking, real-time updates, and scalable APIs.
 
